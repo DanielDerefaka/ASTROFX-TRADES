@@ -68,7 +68,7 @@ export default async function Home() {
           </span>
           
           <h1 className="md:text-[40px] text-center mt-10 text-4xl  font-bold text-orange">
-          We're  ASTROFX TRADES : We Make Profits
+          We're  ASTROFX Trades : We Make Profits
           </h1>
           <p className="text-center max-w-[500px]  mt-5">
             Embrace the future of Investments. Prove your trading skills in the
