@@ -1,76 +1,56 @@
+import { NAV_LINKS } from "@/constants/site";
 import Image from "next/image";
-import * as React from "react";
 import Link from "next/link";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
-import { currentUser } from "@clerk/nextjs";
+import Button from "@/components/site/Button";
 
-async function NavBar() {
-  const user = await currentUser();
-
-
-  
+const Navbar = () => {
   return (
-    <div className="flex gap-5 justify-between items-center px-7 py-1 font-bold border-b border-solid dark:border-none border-zinc-100 leading-[154.5%] max-md:flex-wrap max-md:px-5">
-      <div className="flex gap-1.5 justify-center self-stretch my-auto text-2xl tracking-tighter text-neutral-700">
-        <Image
-          src="/logo.png"
-          alt="LOGO"
-          sizes="50vw"
-          style={{
-            width: "30px",
-            height: "30px",
-          }}
-          width={0}
-          height={0}
-        />
-        <span> ASTROFX TRADES.</span>
-      </div>
-      <ul className="gap-5 dark:text-white justify-between self-stretch my-auto text-sm leading-5 text-neutral-700 max-md:flex-wrap max-md:max-w-full font-normal hidden md:flex">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="#about">About</Link>
-        </li>
-        <li>
-          <Link href="#faq">Faq</Link>
-        </li>
+    <nav className="flexBetween max-container padding-container relative z-30 py-5">
+      <Link href="/">
+        <Image src="/logo.png" alt="logo" width={74} height={29} />
+      </Link>
+
+      <ul className="hidden h-full gap-12 lg:flex">
+        {NAV_LINKS.map((link) => (
+          <Link
+            href={link.href}
+            key={link.key}
+            className="regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+          >
+            {link.label}
+          </Link>
+        ))}
       </ul>
 
-      <Link
-  href={user ? "/dashboard" : "/auth/sign-up"}
-  className="bg-orange hidden md:flex px-4 py-2 rounded-sm text-white"
->
-  {user ? "Dashboard" : "Create Account"}
-</Link>
-
-      <div className="flex md:hidden">
-        <Sheet>
-          <SheetTrigger>
-            <Menu />
-          </SheetTrigger>
-          <SheetContent className="">
-            <SheetHeader className="p-5">
-              <Link href="/">Home</Link>
-          { user && (   <Link href="/dashboard">Dashboard</Link>)}
-              {!user && (
-                <>
-                  <Link href="/auth/sign-up">Sign Up</Link>
-                  <Link href="/auth/sign-in">Sign In</Link>
-                </>
-              )}
-            </SheetHeader>
-          </SheetContent>
-        </Sheet>
+      <div className="lg:flexCenter hidden">
+        <Link href="/dashboard">
+          <Button
+            type="button"
+            title="Login"
+            icon="/user.svg"
+            variant="btn_dark_green"
+          />
+        </Link>
       </div>
-    </div>
-  );
-}
 
-export default NavBar;
+      {/* <Image
+        src="menu.svg"
+        alt="menu"
+        width={32}
+        height={32}
+        className="inline-block cursor-pointer lg:hidden"
+      /> */}
+
+<Link href="/dashboard" className="lg:hidden inline-block" >
+          <Button
+            type="button"
+            title="Login"
+            icon="/user.svg"
+            variant="btn_dark_green"
+          />
+        </Link>
+    </nav>
+  );
+};
+
+export default Navbar;

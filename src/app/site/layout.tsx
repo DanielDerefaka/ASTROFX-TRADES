@@ -1,6 +1,8 @@
 
 
 import NavBar from "@/components/navbar";
+import Footer from "@/components/site/pages/Footer";
+import Features from "@/components/site/pages/Feature";
 
 
 export default function RootLayout({
@@ -13,9 +15,10 @@ export default function RootLayout({
       <html lang="en">
         <body >
        <NavBar/>
-          {children}
-     
-        
+       <main className="relative overflow-hidden">
+       {children}
+       </main>
+        <Footer/>
        
         </body>
       </html>

@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components/forms/sign-up/registration-step.tsx -> ./account-details-form\":{\"id\":\"components/forms/sign-up/registration-step.tsx -> ./account-details-form\",\"files\":[\"static/chunks/_app-pages-browser_src_components_forms_sign-up_account-details-form_tsx.js\"]},\"components/forms/sign-up/registration-step.tsx -> ./otp-form\":{\"id\":\"components/forms/sign-up/registration-step.tsx -> ./otp-form\",\"files\":[\"static/chunks/_app-pages-browser_src_components_forms_sign-up_otp-form_tsx.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST="{}"

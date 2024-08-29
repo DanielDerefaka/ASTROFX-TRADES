@@ -5,7 +5,7 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-const config = {
+const config: Config = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -24,6 +24,7 @@ const config = {
     },
     extend: {
       colors: {
+        // Custom colors
         cream: '#F5F5F5',
         gravel: '#4E4E4E',
         iridium: '#3F3F3F',
@@ -34,11 +35,15 @@ const config = {
         grandis: '#FFC989',
         porcelain: '#F1F1F1',
         ironside: '#636363',
+        
+        // Semantic colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        
+        // Color palettes
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -67,6 +72,41 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        green: {
+          50: '#30AF5B',
+          90: '#292C27',
+        },
+        gray: {
+          10: '#EEEEEE',
+          20: '#A2A2A2',
+          30: '#7B7B7B',
+          50: '#585858',
+          90: '#141414',
+        },
+        orange: {
+          50: '#FF814C',
+        },
+        blue: {
+          70: '#021639',
+        },
+        yellow: {
+          50: '#FEC601',
+        },
+      },
+      backgroundImage: {
+        'bg-img-1': "url('/bg-dx1.jpg')",
+        'bg-img-2': "url('/bg-dx2.webp')",
+        'feature-bg': "url('/feature-bg.png')",
+        pattern: "url('/pattern.png')",
+        'pattern-2': "url('/pattern-bg.png')",
+      },
+      screens: {
+        xs: '400px',
+        '3xl': '1680px',
+        '4xl': '2200px',
+      },
+      maxWidth: {
+        '10xl': '1512px',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -109,23 +149,21 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), 
-
+  plugins: [
+    require('tailwindcss-animate'),
     addVariablesForColors,
   ],
-} satisfies Config
-
-
+};
 
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
 }
 
-export default config
+export default config;
