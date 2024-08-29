@@ -183,7 +183,7 @@ const DepositForm: React.FC<Props> = ({ data }) => {
             </div>
 
             <Button
-              className="bg-grandis text-gray-700 font-semibold"
+              className="bg-orange-400 text-gray-700 font-semibold"
               type="button"
               onClick={() => setStep(2)}
             >
@@ -234,7 +234,7 @@ const DepositForm: React.FC<Props> = ({ data }) => {
                 Back
               </Button>
               <Button
-                className="bg-orange"
+                className="bg-orange-400"
                 type="button"
                 onClick={() => setStep(3)}
               >
