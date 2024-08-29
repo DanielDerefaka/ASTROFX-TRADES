@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/context/theme-provider";
+import JivoChat from "@/components/JivoChat";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
           {children}
+          <JivoChat/>
           <Toaster/>
           </ThemeProvider>
        
